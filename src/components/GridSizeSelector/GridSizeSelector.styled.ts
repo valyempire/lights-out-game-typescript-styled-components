@@ -1,3 +1,5 @@
+import { ButtonProps } from "./GridSizeSelector.types";
+
 /**
  * Imports styled
  */
@@ -11,44 +13,27 @@ export const Container = styled("div")(() => {
     display: "flex",
     textAlign: "center",
     justifyContent: "center",
-    margin: 40,
+    gap: 30,
   };
 });
 
-export const Button = styled("button")(() => {
+export const Button = styled("button")<ButtonProps>((props) => {
+  const { active } = props;
   return {
     textAlign: "center",
     justifyContent: "center",
     margin: 20,
-    backgroundColor: "green",
-    color: "white",
+    padding: 13,
+    backgroundColor: "deepskyblue",
     cursor: "pointer",
-    borderColor: "strong",
     borderRadius: 6,
     fontSize: 16,
-  };
-});
+    color: "dark",
 
-export const Active = styled("div")(() => {
-  return {
-    display: "flex",
-    textAlign: "center",
-    justifyContent: "center",
-    alignItems: "space-between",
-    margin: 40,
-    backgroundColor: "red",
-    color: "white",
-  };
-});
-
-export const InActive = styled("div")(() => {
-  return {
-    display: "flex",
-    textAlign: "center",
-    justifyContent: "center",
-    alignItems: "space-between",
-    margin: 40,
-    backgroundColor: "orange",
-    color: "white",
+    ...(active && {
+      backgroundColor: "navy",
+      fontSize: 20,
+      color: "white",
+    }),
   };
 });

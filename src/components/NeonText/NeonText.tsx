@@ -1,8 +1,8 @@
-import { NeonBlue, NeonOrange } from "./NeonText.styled";
-import { NeonLights } from "./NeonText.types";
+import { Container } from "./NeonText.styled";
+import { NeonTextProps } from "./NeonText.types";
 
-export const NeonText: React.FC<NeonLights> = (props) => {
-  const { children } = props;
+export const NeonText: React.FC<NeonTextProps> = (props) => {
+  const { children, color } = props;
 
-  return <NeonBlue>{children}</NeonBlue>;
+  return <Container color={color}>{children}</Container>;
 };

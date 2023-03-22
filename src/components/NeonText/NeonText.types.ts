@@ -1,3 +1,4 @@
-export interface NeonLights {
+export interface NeonTextProps {
   children: React.ReactNode;
+  color: "blue" | "orange" | "green";
 }
