@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 
-import { Container } from "./GameController.styled";
+/**
+ * External imports
+ */
+import lodash from "lodash";
 
-import { Title } from "../Title";
 /**
  * Imports components
  */
 import { Board } from "../Board";
-
 import { GridSizeSelector } from "../GridSizeSelector";
+import { Title } from "../Title";
 
 /**
  * Imports types
@@ -19,6 +21,11 @@ import { Cell } from "../../types";
  * Imports hooks
  */
 import { useLocalStorage } from "../../hooks";
+
+/**
+ * Imports styles
+ */
+import { NeonText } from "../NeonText";
 
 /**
  * Displays the component
@@ -32,7 +39,12 @@ export const GameController: React.FC = () => {
   /**
    * Initializes the grid size
    */
-  const [gridSize, setGridSize] = useLocalStorage("gridSize", 5);
+  const [gridSize, setGridSize] = useLocalStorage("gridSize", 3);
+
+  /**
+   * Initializes the grid size
+   */
+  const [winner, setWinner] = useState(false);
 
   /**
    * Handles the change of the grid size
@@ -65,6 +77,44 @@ export const GameController: React.FC = () => {
   };
 
   /**
+   * Handles toggling the cell at the top, left, bottom, and right of the cell and the cell itself
+   */
+
+  const toggleCellsAround = (cell: Cell, board: Cell[][]) => {
+    const { positionX, positionY } = cell;
+
+    const newBoard = lodash.cloneDeep(board);
+
+    const toggleCell = (positionX: number, positionY: number) => {
+      if (
+        positionX >= 0 &&
+        positionX < gridSize &&
+        positionY >= 0 &&
+        positionY < gridSize
+      ) {
+        newBoard[positionX][positionY] = {
+          ...newBoard[positionX][positionY],
+          active: !newBoard[positionX][positionY].active,
+        };
+      }
+    };
+
+    toggleCell(positionX, positionY);
+    toggleCell(positionX, positionY - 1);
+    toggleCell(positionX, positionY + 1);
+    toggleCell(positionX - 1, positionY);
+    toggleCell(positionX + 1, positionY);
+
+    // const isWinner = checkForWinner(newBoard, gameMode);
+
+    const winner = board.every((row) => row.every((cell) => !cell));
+
+    setBoard(newBoard);
+    setWinner(winner);
+    // setMovesCount((prevState) => prevState + 1);
+  };
+
+  /**
    * Handles the initialization of the board
    */
   useEffect(() => {
@@ -76,7 +126,14 @@ export const GameController: React.FC = () => {
     <div>
       <Title />
       <GridSizeSelector changeGridSize={changeGridSize} activeSize={gridSize} />
-      <Board board={board} gridSize={gridSize} />
+      {!winner && (
+        <Board
+          board={board}
+          gridSize={gridSize}
+          toggleCellsAround={toggleCellsAround}
+        />
+      )}
+      {winner && <NeonText color="orange">You Win</NeonText>}
     </div>
   );
 };

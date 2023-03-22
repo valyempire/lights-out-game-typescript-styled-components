@@ -1,12 +1,13 @@
 import { NeonText } from "../NeonText";
-import { Container } from "./Title.styled";
+import { Container, Input } from "./Title.styled";
 
 export const Title: React.FC = () => {
   return (
     <Container>
       <div>
-        <input type={"checkbox"} />
+        <Input type={"checkbox"} />
       </div>
+
       <NeonText color="blue">Lights</NeonText>
       <NeonText color="orange">Out</NeonText>
     </Container>

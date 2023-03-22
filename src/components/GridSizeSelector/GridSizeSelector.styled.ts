@@ -24,15 +24,14 @@ export const Button = styled("button")<ButtonProps>((props) => {
     justifyContent: "center",
     margin: 20,
     padding: 13,
-    backgroundColor: "deepskyblue",
+    backgroundColor: "#ADFF2F",
     cursor: "pointer",
     borderRadius: 6,
     fontSize: 16,
     color: "dark",
 
     ...(active && {
-      backgroundColor: "navy",
-      fontSize: 20,
+      backgroundColor: "green",
       color: "white",
     }),
   };

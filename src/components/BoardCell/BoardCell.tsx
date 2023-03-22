@@ -4,59 +4,31 @@ import { useCallback } from "react";
  * Imports styled components
  */
 import { Container } from "./BoardCell.styles";
+
 /**
  * Imports types
  */
 import { BoardCellProps } from "./BoardCell.types";
-import { Cell } from "../../types";
+
 /**
  * Displays the component
  */
 export const BoardCell: React.FC<BoardCellProps> = (props) => {
-  const { cell, gridSize, board } = props;
+  const { cell, gridSize, board, toggleCellsAround } = props;
+
+  const { active, positionX, positionY } = cell;
 
   /**
-   * Handles toggling the cell at the top, left, bottom, and right of the cell and the cell itself
+   * Handle click on the cell
    */
-  const toggleCellsAround = useCallback(
-    (cell: Cell, board: Cell[][]) => {
-      const { positionX, positionY } = cell;
-
-      const newBoard = Object.assign([], board) as Cell[][];
-
-      const toggleCell = (positionX: number, positionY: number) => {
-        if (
-          positionX >= 0 &&
-          positionX < gridSize &&
-          positionY >= 0 &&
-          positionY < gridSize
-        ) {
-          newBoard[positionX][positionY] = {
-            ...newBoard[positionX][positionY],
-            active: !newBoard[positionX][positionY].active,
-          };
-        }
-      };
-
-      toggleCell(positionX, positionY);
-      toggleCell(positionX, positionY - 1);
-      toggleCell(positionX, positionY + 1);
-      toggleCell(positionX - 1, positionY);
-      toggleCell(positionX + 1, positionY);
-
-      // const isWinner = checkForWinner(newBoard, gameMode);
-
-      // setBoard(newBoard);
-      // setIsWinner(isWinner);
-      // setMovesCount((prevState) => prevState + 1);
-    },
-    [board]
-  );
+  const handleClick = () => {
+    toggleCellsAround(cell, board);
+  };
 
   return (
-    <Container>
-      <div>{cell.positionX}</div>
-      <div>{cell.positionY}</div>
+    <Container gridSize={gridSize} active={active} onClick={handleClick}>
+      <div>{positionX}</div>
+      <div>{positionY}</div>
     </Container>
   );
 };
