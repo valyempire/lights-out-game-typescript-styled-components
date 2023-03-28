@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { GameMode } from "../../types";
 /**
  * External imports
  */
@@ -11,7 +11,10 @@ import lodash from "lodash";
 import { Board } from "../Board";
 import { GridSizeSelector } from "../GridSizeSelector";
 import { Title } from "../Title";
+import { GameReset } from "../GameReset";
+import { GameTime } from "../GameTime/";
 
+import { Container } from "./GameController.styled";
 /**
  * Imports types
  */
@@ -47,6 +50,16 @@ export const GameController: React.FC = () => {
   const [winner, setWinner] = useState(false);
 
   /**
+   * Initializes game mode state
+   */
+  const [gameMode, setGameMode] = useState<GameMode>("lights-out");
+
+  /**
+   * Initializes moves state
+   */
+  const [numClicks, setNumClicks] = useState(0);
+
+  /**
    * Handles the change of the grid size
    */
   const changeGridSize = (size: number) => {
@@ -54,6 +67,12 @@ export const GameController: React.FC = () => {
     initializeBoard(size);
   };
 
+  /**
+   * Handles changing the game mode
+   */
+  const changeGameMode = (value: boolean) => {
+    setGameMode(value ? "lights-on" : "lights-out");
+  };
   /**
    * Handles the initialization of the board
    */
@@ -111,7 +130,15 @@ export const GameController: React.FC = () => {
 
     setBoard(newBoard);
     setWinner(winner);
+    setNumClicks((prevNumClicks) => prevNumClicks + 1);
     // setMovesCount((prevState) => prevState + 1);
+  };
+
+  const handleResetGame = () => {
+    setBoard([]);
+    setWinner(false);
+    initializeBoard(gridSize);
+    setNumClicks(0);
   };
 
   /**
@@ -124,7 +151,13 @@ export const GameController: React.FC = () => {
 
   return (
     <div>
-      <Title />
+      <Title gameMode={gameMode} changeGameMode={changeGameMode} />
+      <GameReset handleResetGame={handleResetGame} />
+      <GameTime
+        gridSize={gridSize}
+        winner={winner}
+        handleResetGame={handleResetGame}
+      />
       <GridSizeSelector changeGridSize={changeGridSize} activeSize={gridSize} />
       {!winner && (
         <Board
@@ -134,6 +167,7 @@ export const GameController: React.FC = () => {
         />
       )}
       {winner && <NeonText color="orange">You Win</NeonText>}
+      <Container>Number of Moves: {numClicks}</Container>
     </div>
   );
 };

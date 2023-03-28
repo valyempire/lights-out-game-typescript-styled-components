@@ -20,18 +20,17 @@ export const Input = styled("input")(() => {
     backgroundColor: "#ccc",
     webkitAppearance: "none",
     transition: "background .3s;rgba(0,0,0,0.15)",
-
-    // "& ::after": {
-    //   content: "",
-    //   position: "absolute",
-    //   top: "50%",
-    //   left: "30%",
-    //   transform: "translate(-50%, -50%)",
-    //   borderRadius: " 50%",
-    //   height: "1.25rem",
-    //   width: "1.25rem",
-    //   backgroundColor: "white",
-    //   transition: "left .3s",
-    // },
+    "& ::after": {
+      content: '""',
+      position: "absolute",
+      top: "50%",
+      left: "30%",
+      transform: "translate(-50%, -50%)",
+      borderRadius: " 50%",
+      height: "1.25rem",
+      width: "1.25rem",
+      backgroundColor: "white",
+      transition: "left .3s",
+    },
   };
 });

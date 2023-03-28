@@ -1,15 +1,18 @@
 import { NeonText } from "../NeonText";
 import { Container, Input } from "./Title.styled";
+import { TitleProps } from "./Title.types";
+import { GameModeSwitch } from "../GameModeSwitch";
 
-export const Title: React.FC = () => {
+export const Title: React.FC<TitleProps> = (props) => {
+  const { gameMode, changeGameMode } = props;
   return (
     <Container>
-      <div>
-        <Input type={"checkbox"} />
-      </div>
+      <NeonText color="orange">Lights</NeonText>
+      <NeonText color="blue">
+        {gameMode === "lights-out" ? "Out" : "On"}
+      </NeonText>
 
-      <NeonText color="blue">Lights</NeonText>
-      <NeonText color="orange">Out</NeonText>
+      <GameModeSwitch gameMode={gameMode} changeGameMode={changeGameMode} />
     </Container>
   );
 };
