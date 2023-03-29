@@ -59,6 +59,8 @@ export const GameController: React.FC = () => {
    */
   const [numClicks, setNumClicks] = useState(0);
 
+  const [timer, setTimer] = useState({ minutes: 0, seconds: 0 });
+
   /**
    * Handles the change of the grid size
    */
@@ -153,12 +155,13 @@ export const GameController: React.FC = () => {
     <div>
       <Title gameMode={gameMode} changeGameMode={changeGameMode} />
       <GameReset handleResetGame={handleResetGame} />
-      <GameTime
-        gridSize={gridSize}
-        winner={winner}
-        handleResetGame={handleResetGame}
-      />
-      <GridSizeSelector changeGridSize={changeGridSize} activeSize={gridSize} />
+      <GameTime gridSize={gridSize} winner={winner} setTimer={setTimer} />
+      {!winner && (
+        <GridSizeSelector
+          changeGridSize={changeGridSize}
+          activeSize={gridSize}
+        />
+      )}{" "}
       {!winner && (
         <Board
           board={board}
@@ -168,6 +171,13 @@ export const GameController: React.FC = () => {
       )}
       {winner && <NeonText color="orange">You Win</NeonText>}
       <Container>Number of Moves: {numClicks}</Container>
+      {winner && (
+        <Container>
+          {" "}
+          {"Time:"} {timer.minutes}:
+          {timer.seconds < 10 ? "0" + timer.seconds : timer.seconds}{" "}
+        </Container>
+      )}
     </div>
   );
 };
