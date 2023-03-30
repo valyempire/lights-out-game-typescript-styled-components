@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { useGame } from "../../hooks";
 
 /**
  * Imports styled components
@@ -14,7 +15,8 @@ import { BoardCellProps } from "./BoardCell.types";
  * Displays the component
  */
 export const BoardCell: React.FC<BoardCellProps> = (props) => {
-  const { cell, gridSize, board, toggleCellsAround } = props;
+  const { cell } = props;
+  const { gridSize, board, toggleCellsAround } = useGame();
 
   const { active, positionX, positionY } = cell;
 

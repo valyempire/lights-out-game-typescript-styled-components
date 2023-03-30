@@ -1,10 +1,9 @@
-import React from 'react';
+import React from "react";
+import { useGame } from "../../hooks";
+import { Container, Button } from "./GameReset.styled";
 
-import { GameResetProps } from './GameReset.types';
-import { Container, Button } from './GameReset.styled';
-
-export const GameReset: React.FC<GameResetProps> = (props) => {
-  const { handleResetGame } = props;
+export const GameReset: React.FC = () => {
+  const { handleResetGame } = useGame();
 
   return (
     <Container>

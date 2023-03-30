@@ -8,12 +8,10 @@ import { Cell } from "../../types";
  */
 export interface BoardCellProps {
   cell: Cell;
-  gridSize: number;
-  board: Cell[][];
-  toggleCellsAround: (cell: Cell, board: Cell[][]) => void;
+  key: number;
 }
 
-export interface ContainerProps {
-  active: boolean;
-  gridSize: number;
-}
+// export interface ContainerProps {
+//   active: boolean;
+//   gridSize: number;
+// }
