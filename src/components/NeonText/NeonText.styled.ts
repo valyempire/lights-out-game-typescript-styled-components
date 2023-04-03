@@ -1,11 +1,24 @@
+/**
+ * Imports styled
+ */
 import { styled, CSSObject } from "@mui/system";
+
+/**
+ * Imports types
+ */
 import { NeonTextProps } from "./NeonText.types";
 
+/**
+ * Styles the Container
+ */
 export const Container = styled("h2", {
   shouldForwardProp: (propName) => propName !== "color",
 })<NeonTextProps>((props) => {
   const { color } = props;
 
+  /**
+   * Gets the text color
+   */
   const getTextColor = () => {
     switch (color) {
       case "blue":
@@ -33,6 +46,10 @@ export const Container = styled("h2", {
         return "#000";
     }
   };
+
+  /**
+   * Gets the keyframe based on the color
+   */
   const getKeyframes = () => {
     switch (color) {
       case "blue":

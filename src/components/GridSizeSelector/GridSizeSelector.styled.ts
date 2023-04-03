@@ -17,6 +17,9 @@ export const Container = styled("div")(() => {
   };
 });
 
+/**
+ * Styles the Button
+ */
 export const Button = styled("button")<ButtonProps>((props) => {
   const { active } = props;
   return {
@@ -24,14 +27,15 @@ export const Button = styled("button")<ButtonProps>((props) => {
     justifyContent: "center",
     margin: 20,
     padding: 13,
-    backgroundColor: "#ADFF2F",
+    backgroundColor: "cornflowerblue",
     cursor: "pointer",
     borderRadius: 6,
     fontSize: 16,
-    color: "dark",
+    color: "white",
+    fontWeight: "bold",
 
     ...(active && {
-      backgroundColor: "green",
+      backgroundColor: "darkblue",
       color: "white",
     }),
   };

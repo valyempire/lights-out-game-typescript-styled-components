@@ -8,8 +8,4 @@ import { Cell } from "../../types";
  */
 export interface BoardRowProps {
   row: Cell[];
-  key: number;
-  // gridSize: number;
-  // board: Cell[][];
-  // toggleCellsAround: (cell: Cell, board: Cell[][]) => void;
 }

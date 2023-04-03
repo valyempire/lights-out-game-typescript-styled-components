@@ -3,6 +3,9 @@
  */
 import { styled } from "@mui/system";
 
+/**
+ * imports types
+ */
 import { ContainerProps } from "./BoardCell.types";
 
 /**
@@ -31,5 +34,12 @@ export const Container = styled("div", {
     ...(active && {
       backgroundColor: "green",
     }),
+  };
+});
+
+export const IconContainer = styled("div")(() => {
+  return {
+    color: "while",
+    backgroundColor: "red",
   };
 });

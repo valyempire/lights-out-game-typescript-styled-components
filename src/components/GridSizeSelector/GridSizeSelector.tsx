@@ -1,8 +1,18 @@
-import { GridSizeProps } from "./GridSizeSelector.types";
+/**
+ * Imports styles components
+ */
 import { Container, Button } from "./GridSizeSelector.styled";
 
-export const GridSizeSelector: React.FC<GridSizeProps> = (props) => {
-  const { changeGridSize, activeSize } = props;
+/**
+ * Imports hooks
+ */
+import { useGame } from "../../hooks";
+
+/**
+ * Displays the component
+ */
+export const GridSizeSelector: React.FC = () => {
+  const { changeGridSize, gridSize, winner } = useGame();
 
   const gridSizes = [
     { value: 3, label: "3x3" },
@@ -10,14 +20,16 @@ export const GridSizeSelector: React.FC<GridSizeProps> = (props) => {
     { value: 9, label: "9x9" },
   ];
 
+  if (winner) return null;
+
   return (
     <Container>
       {gridSizes.map((size) => (
         <Button
           key={size.label}
-          active={size.value === activeSize}
+          active={size.value === gridSize}
           onClick={() => {
-            if (size.value !== activeSize) {
+            if (size.value !== gridSize) {
               changeGridSize(size.value);
             }
           }}

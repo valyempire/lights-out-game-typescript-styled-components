@@ -3,28 +3,19 @@
  */
 import { styled } from "@mui/system";
 
+/**
+ * Styles the Container
+ */
 export const Container = styled("div")(() => {
   return {
-    display: "flex",
-    textAlign: "center",
-    justifyContent: "center",
-    gap: 50,
-    margin: "20px  0",
-  };
-});
-
-export const Button = styled("button")(() => {
-  return {
-    padding: 20,
-    cursor: "pointer",
-    fontSize: 20,
-    fontWeight: "bold",
     display: "inline-block",
     alignItems: "center",
     justifyContent: "center",
+    fontSize: "1.2rem",
     color: "white",
     margin: "1rem 0",
     border: "solid",
+    padding: 12,
     borderRadius: 10,
     backgroundColor: "navy",
   };

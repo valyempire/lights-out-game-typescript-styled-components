@@ -3,10 +3,6 @@
  */
 import { GameController } from "./components/GameController";
 import { GameProvider } from "./hooks";
-/**
- * Imports styles
- */
-import "./App.css";
 
 /**
  * Displays the component

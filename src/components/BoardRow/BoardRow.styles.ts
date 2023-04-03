@@ -9,6 +9,7 @@ import { styled } from "@mui/system";
 export const Container = styled("div")(() => {
   return {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    gap: 5,
   };
 });

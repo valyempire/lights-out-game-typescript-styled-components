@@ -12,7 +12,6 @@ import { Container } from "./BoardRow.styles";
  * Imports types
  */
 import { BoardRowProps } from "./BoardRow.types";
-import { useGame } from "../../hooks";
 /**
  * Displays the component
  */
