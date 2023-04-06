@@ -13,7 +13,7 @@ import { ContainerProps } from "./BoardCell.types";
  */
 export const Container = styled("div", {
   shouldForwardProp: (propName) =>
-    propName !== "active" && propName !== "gridSize",
+    propName !== "active" && propName !== "gridSize" && propName !== "isHint",
 })<ContainerProps>((props) => {
   const { active, gridSize } = props;
 

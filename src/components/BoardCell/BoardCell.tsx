@@ -19,30 +19,67 @@ import { Container, IconContainer } from "./BoardCell.styles";
  */
 import { BoardCellProps } from "./BoardCell.types";
 
-/**
- * Displays the component
- */
+// /**
+//  * Displays the component
+//  */
+// export const BoardCell: React.FC<BoardCellProps> = (props) => {
+//   const { cell } = props;
+
+//   const { active, positionX, positionY } = cell;
+
+//   /**
+//    * Gets the game state
+//    */
+//   const { hints, moves, gridSize, board, toggleCellsAround } = useGame();
+
+//   /**
+//    * Handle click on the cell
+//    */
+//   const handleClick = () => {
+//     toggleCellsAround(cell, board);
+//   };
+
+//   const getHintStatus = () => {
+//     if (moves.length >= hints.length) return false;
+//     const [x, y] = hints[moves.length];
+//     console.log({ hints, moves, cell });
+
+//     return x === positionX && y === positionY;
+//   };
+
+//   return (
+//     <Container
+//       gridSize={gridSize}
+//       active={active}
+//       onClick={handleClick}
+//       isHint={getHintStatus()}
+//     >
+//       {getHintStatus() && (
+//         <IconContainer>
+//           <FontAwesomeIcon icon={faStar} />
+//         </IconContainer>
+//       )}
+//     </Container>
+//   );
+// };
+import { useState } from "react"; // Import the useState hook
+
+// ... The rest of the component code ...
+
 export const BoardCell: React.FC<BoardCellProps> = (props) => {
   const { cell } = props;
-
   const { active, positionX, positionY } = cell;
-
-  /**
-   * Gets the game state
-   */
   const { hints, moves, gridSize, board, toggleCellsAround } = useGame();
 
-  /**
-   * Handle click on the cell
-   */
+  // Initialize the helperOn state to false
+  const { helperOn } = useGame();
+
   const handleClick = () => {
     toggleCellsAround(cell, board);
   };
-
   const getHintStatus = () => {
     if (moves.length >= hints.length) return false;
     const [x, y] = hints[moves.length];
-    console.log({ hints, moves, cell });
 
     return x === positionX && y === positionY;
   };
@@ -54,7 +91,10 @@ export const BoardCell: React.FC<BoardCellProps> = (props) => {
       onClick={handleClick}
       isHint={getHintStatus()}
     >
-      {getHintStatus() && (
+      {/* Show the toggle button */}
+
+      {/* Conditionally show the hint icon based on the helperOn state */}
+      {helperOn && getHintStatus() && (
         <IconContainer>
           <FontAwesomeIcon icon={faStar} />
         </IconContainer>

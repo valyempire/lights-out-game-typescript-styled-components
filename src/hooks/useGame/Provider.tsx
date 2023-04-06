@@ -14,7 +14,7 @@ import { context, ProviderProps, ProviderValues } from "./Context";
 /**
  * Imports types
  */
-import { Cell, GameMode } from "../../types";
+import { Cell, GameMode, GameHistoryItem } from "../../types";
 
 /**
  * External imports
@@ -61,6 +61,13 @@ export const GameProvider: React.FC<ProviderProps> = (props) => {
   const [hints, setHints] = useState<number[][]>([]);
 
   const [moves, setMoves] = useState<number[][]>([]);
+
+  const [history, setHistory] = useLocalStorage<GameHistoryItem[]>(
+    "History",
+    []
+  );
+
+  const [helperOn, setHelperOn] = useState(false);
 
   /**
    * Handles the change of the grid size
@@ -124,8 +131,26 @@ export const GameProvider: React.FC<ProviderProps> = (props) => {
     );
 
     setBoard(newBoard);
-    setWinner(winner);
+    setWinner(checkForWinner(newBoard, gameMode));
     setMoves((prevState) => [...prevState, [positionX, positionY]]);
+  };
+
+  /**
+   * Handle the delete history item button
+   */
+  const deleteHistoryItem = (index: number) => {
+    setHistory((prevState) => {
+      if (!prevState) return [];
+      const newHistory = prevState.filter((_, i) => i !== index);
+      return newHistory;
+    });
+  };
+
+  /**
+   * Handle the delete history buton
+   */
+  const clearHistory = () => {
+    setHistory([]);
   };
 
   const handleResetGame = () => {
@@ -136,6 +161,29 @@ export const GameProvider: React.FC<ProviderProps> = (props) => {
     setIsReset(true);
     setMoves([]);
   };
+
+  const formatTimer = (timer: { minutes: number; seconds: number }) => {
+    return `${timer.minutes < 10 ? "0" + timer.minutes : timer.minutes}:${
+      timer.seconds < 10 ? "0" + timer.seconds : timer.seconds
+    }`;
+  };
+
+  useEffect(() => {
+    if (timer.minutes > 0 || timer.seconds > 0)
+      setHistory((prevState) => {
+        if (!prevState) return [];
+        return [
+          ...prevState,
+          {
+            id: new Date().getTime(),
+            mode: gameMode,
+            gridSize,
+            moves: moves.length,
+            time: formatTimer(timer),
+          },
+        ];
+      });
+  }, [timer]);
 
   /**
    * Handles the initialization of the board
@@ -171,15 +219,20 @@ export const GameProvider: React.FC<ProviderProps> = (props) => {
     isReset,
     hints,
     moves,
+    history,
+    helperOn,
     changeGridSize,
     changeGameMode,
     initializeBoard,
     toggleCellsAround,
     handleResetGame,
+    deleteHistoryItem,
+    clearHistory,
     setTimer,
     setBoard,
     setHints,
     setMoves,
+    setHelperOn,
   };
 
   return <Provider value={providerValue}>{children}</Provider>;

@@ -8,16 +8,19 @@ import { GameReset } from "../GameReset";
 import { GameTime } from "../GameTime/";
 import { WinnerMessage } from "../WinnerMessage/WinnerMessage";
 import { Timer } from "../Timer";
-
+import { GameHistory } from "../GameHistory";
+import { Hints } from "../Hints";
 /**
  * imports styles
  */
+
 import { Container } from "./GameController.styled";
 
 /**
  * imports hooks
  */
 import { useGame } from "../../hooks";
+// import ShowModal from "../ShowModal/ShowModal";
 
 /**
  * Displays the component
@@ -27,6 +30,8 @@ export const GameController: React.FC = () => {
   console.log(board);
   return (
     <div>
+      <GameHistory />
+      <Hints />
       <Title />
       <GameReset />
       <GameTime />
