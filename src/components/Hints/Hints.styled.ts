@@ -10,7 +10,7 @@ export const Button = styled("button")(() => {
   return {
     display: "inline-block",
     float: "left",
-    padding: 10,
+    padding: 8,
     backgroundColor: "#151a7a",
     color: "white",
     marginLeft: 10,

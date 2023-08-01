@@ -19,7 +19,7 @@ export interface ProviderValues {
   board: Cell[][];
   gridSize: number;
   winner: boolean;
-  gameMode: GameMode;
+  gameMode: GameMode; 
   numClicks: number;
   timer: {
     minutes: number;

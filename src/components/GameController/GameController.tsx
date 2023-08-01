@@ -14,7 +14,7 @@ import { Hints } from "../Hints";
  * imports styles
  */
 
-import { Container } from "./GameController.styled";
+import { Container, GameHeaders } from "./GameController.styled";
 
 /**
  * imports hooks
@@ -33,8 +33,10 @@ export const GameController: React.FC = () => {
       <GameHistory />
       <Hints />
       <Title />
-      <GameReset />
-      <GameTime />
+      <GameHeaders className="vali">
+        <GameReset />
+        <GameTime />
+      </GameHeaders>
       <GridSizeSelector />
       <Board board={board} winner={winner} />
       <WinnerMessage />

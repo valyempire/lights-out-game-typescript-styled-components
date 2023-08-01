@@ -15,15 +15,15 @@ export const Container = styled("div")(() => {
 
 export const Button = styled("button")(() => {
   return {
-    padding: 20,
+    padding: 11,
     cursor: "pointer",
-    fontSize: 20,
+    fontSize: 11,
     fontWeight: "bold",
     display: "inline-block",
     alignItems: "center",
     justifyContent: "center",
     color: "white",
-    margin: "1rem 0",
+    // margin: "1rem 0",
     border: "solid",
     borderRadius: 10,
     backgroundColor: "navy",

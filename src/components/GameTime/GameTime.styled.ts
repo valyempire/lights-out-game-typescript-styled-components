@@ -8,15 +8,14 @@ import { styled } from "@mui/system";
  */
 export const Container = styled("div")(() => {
   return {
-    // maxWidth: 120,
     display: "inline-block",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: "1.2rem",
+    fontSize: 11,
     color: "white",
-    margin: "1rem 0",
+    // margin: "1rem 0",
     border: "solid",
-    padding: 12,
+    padding: 11,
     borderRadius: 10,
     backgroundColor: "navy",
   };

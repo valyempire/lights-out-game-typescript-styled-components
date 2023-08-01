@@ -13,7 +13,7 @@ export const Container = styled("div")(() => {
 
     marginLeft: 30,
     border: "1px solid #fff",
-    padding: 10,
+    padding: 5,
     backgroundColor: "red",
   };
 });
