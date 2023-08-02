@@ -33,6 +33,14 @@ export const HistoryTable = styled("div")(() => {
     backgroundColor: "#263238",
     width: 430,
     height: 214,
+    "@media (max-width: 768px)": {
+      width: "auto",
+      height: "auto",
+    },
+    "@media (max-width: 320px)": {
+      width: "auto",
+      height: "auto",
+    },
   };
 });
 

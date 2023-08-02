@@ -1,14 +1,14 @@
 /**
  * Imports components
  */
-import { Modal } from '../Modal';
-import { RankingItem } from '../RankingItem';
+import { Modal } from "../Modal";
+import { RankingItem } from "../RankingItem";
 
 /**
  * Imports font awesome
  */
-import { faCrown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCrown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 /**
  * Imports styled components
@@ -21,17 +21,17 @@ import {
   NoRankingBlock,
   RankingContainer,
   CategoryContainer,
-} from './GameRanking.styles';
+} from "./GameRanking.styles";
 
 /**
  * Imports hooks
  */
-import { useModal, useGame } from '../../hooks';
+import { useModal, useGame } from "../../hooks";
 
 /**
  * Imports types
  */
-import { GameMode } from '../../types';
+import { GameMode } from "../../types";
 
 /**
  * Displays the component
@@ -87,26 +87,26 @@ export const GameRanking: React.FC = () => {
           <GameModeText className="game-mode-text"> Lights Out </GameModeText>
           <FlexContainer className="flex-container">
             <CategoryContainer className="category-container">
-              {getTopScore(3, 'lights-out')}
+              {getTopScore(3, "lights-out")}
             </CategoryContainer>
             <CategoryContainer className="category-container">
-              {getTopScore(5, 'lights-out')}
+              {getTopScore(5, "lights-out")}
             </CategoryContainer>
             <CategoryContainer className="category-container">
-              {getTopScore(9, 'lights-out')}
+              {getTopScore(9, "lights-out")}
             </CategoryContainer>
           </FlexContainer>
           <GameModeText className="game-mode-text"> Lights On </GameModeText>
           <FlexContainer className="flex-container">
             <CategoryContainer className="category-container">
-              {getTopScore(3, 'lights-on')}
+              {getTopScore(3, "lights-on")}
             </CategoryContainer>
             <CategoryContainer className="category-container">
-              {' '}
-              {getTopScore(5, 'lights-on')}
+              {" "}
+              {getTopScore(5, "lights-on")}
             </CategoryContainer>
             <CategoryContainer className="category-container">
-              {getTopScore(9, 'lights-on')}
+              {getTopScore(9, "lights-on")}
             </CategoryContainer>
           </FlexContainer>
         </RankingContainer>

@@ -64,7 +64,7 @@ export const GameTools = styled("div")(() => {
     "@media (max-width: 768px)": {
       top: 30,
     },
-    "@media (max-width: 391px)": {
+    "@media (max-width: 320px)": {
       top: 10,
     },
   };

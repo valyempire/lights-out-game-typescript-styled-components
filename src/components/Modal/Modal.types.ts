@@ -3,6 +3,7 @@ export interface ModalProps {
   onClose: () => void;
   children: React.ReactNode;
   title: string;
+  width: number;
 }
 
 export interface ContentContainerProps {
