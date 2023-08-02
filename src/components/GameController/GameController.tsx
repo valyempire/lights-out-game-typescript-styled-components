@@ -17,8 +17,9 @@ import { GameRanking } from "../GameRanking";
 
 import {
   Container,
+  GameTools,
   GameHeaders,
-  LeftTopSection,
+  ContainerM,
 } from "./GameController.styled";
 
 /**
@@ -33,12 +34,12 @@ import { useGame } from "../../hooks";
 export const GameController: React.FC = () => {
   const { board, winner, moves } = useGame();
   return (
-    <div>
-      <LeftTopSection>
+    <Container>
+      <GameTools>
         <GameHistory />
         <Hints />
         <GameRanking />
-      </LeftTopSection>
+      </GameTools>
       <Title />
       <GameHeaders className="vali">
         <GameReset />
@@ -47,8 +48,8 @@ export const GameController: React.FC = () => {
       <GridSizeSelector />
       <Board board={board} winner={winner} />
       <WinnerMessage />
-      <Container>Number of Moves: {moves.length}</Container>
+      <ContainerM>Number of Moves: {moves.length}</ContainerM>
       <Timer />
-    </div>
+    </Container>
   );
 };

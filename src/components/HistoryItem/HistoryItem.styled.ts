@@ -37,22 +37,24 @@ export const HistoryTable = styled("div")(() => {
 });
 
 /**
- *  Styles the Button
+ * Styles the Delete Container
  */
-export const DeleteButton = styled("button")(() => {
+export const DeleteButton = styled("div")(() => {
   return {
     display: "flex",
     maxWidth: "max-content",
-    // padding: 16,
     backgroundColor: "#263238",
     color: "white",
     marginLeft: 23,
-    borderRadius: 37,
     marginBottom: 25,
-    padding: 10,
-
+    cursor: "pointer",
     "&:hover": {
-      backgroundColor: "red",
+      color: "white",
+      "& svg": {
+        color: "red",
+        width: 30,
+        height: 30,
+      },
     },
   };
 });

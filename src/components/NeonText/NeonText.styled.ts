@@ -112,6 +112,12 @@ export const Container = styled("h2", {
     animation: `neon-${color} 2s ease-in-out infinite alternate`,
     MozAnimation: ` neon-${color} 2s ease-in-out infinite alternate`,
     WebkitAnimation: `neon-${color} 2s ease-in-out infinite alternate`,
+    "@media (max-width: 768px)": {
+      fontSize: 50,
+    },
+    "@media (max-width: 320px)": {
+      fontSize: 40,
+    },
   };
 
   styles[`@keyframes neon-${color}`] = getKeyframes();

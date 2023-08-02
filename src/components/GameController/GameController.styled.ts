@@ -4,9 +4,23 @@
 import { styled } from "@mui/system";
 
 /**
- * Styles the container
+ * Styles the Container
  */
 export const Container = styled("div")(() => {
+  return {
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+  };
+});
+
+/**
+ * Styles the container
+ */
+export const ContainerM = styled("div")(() => {
   return {
     padding: 8,
     cursor: "pointer",
@@ -35,10 +49,23 @@ export const GameHeaders = styled("div")(() => {
   };
 });
 
-export const LeftTopSection = styled("div")({
-  display: "flex", // Setăm containerul să fie flexibil
-  alignItems: "center", // Aliniem componentele în centru pe axa verticală
-  justifyContent: "flex-start", // Aliniem componentele la stânga pe axa orizontală
-  marginBottom: 20,
-  gap: 20, // Adăugăm un spațiu între componentele din stânga
+/**
+ * Styles the Game Options
+ */
+export const GameTools = styled("div")(() => {
+  return {
+    position: "absolute",
+    top: 10,
+    left: 10,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 10,
+    "@media (max-width: 768px)": {
+      top: 30,
+    },
+    "@media (max-width: 391px)": {
+      top: 10,
+    },
+  };
 });
