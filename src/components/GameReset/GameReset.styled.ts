@@ -17,7 +17,7 @@ export const Button = styled("button")(() => {
   return {
     padding: 11,
     cursor: "pointer",
-    fontSize: 11,
+    fontSize: 16,
     fontWeight: "bold",
     display: "inline-block",
     alignItems: "center",

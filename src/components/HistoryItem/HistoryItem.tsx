@@ -4,12 +4,13 @@ import { useGameUtils } from "../../hooks";
 import {
   Container,
   HistoryTable,
-  ButtonDelete,
+  DeleteButton,
   Date,
   Mode,
   Time,
   GridSize,
   Moves,
+  RowContainer,
 } from "./HistoryItem.styled";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -22,26 +23,28 @@ export const HistoryItem: React.FC = () => {
     deleteHistoryItem(index);
   };
 
-  return (
-    <Container>
-      {history.map((historyItem, index) => {
-        return (
-          <HistoryTable key={index}>
+  const renderHistory = () => {
+    return history.map((historyItem, index) => {
+      return (
+        <HistoryTable key={index}>
+          <RowContainer>
             <Date> {formatTimestamp(historyItem.id as number)}</Date>
-
             <Mode>Mode: {historyItem.mode}</Mode>
-            <Moves>Moves: {historyItem.moves}</Moves>
-            <Time>Time: {historyItem.time}</Time>
+          </RowContainer>
+          <Moves>Moves: {historyItem.moves}</Moves>
+          <Time>Time: {historyItem.time}</Time>
+          <RowContainer>
+            <DeleteButton onClick={() => handleDelete(index)}>
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </DeleteButton>
             <GridSize>
               {historyItem.gridSize}X{historyItem.gridSize}
             </GridSize>
+          </RowContainer>
+        </HistoryTable>
+      );
+    });
+  };
 
-            <ButtonDelete onClick={() => handleDelete(index)}>
-              <FontAwesomeIcon icon={faTrashAlt} />
-            </ButtonDelete>
-          </HistoryTable>
-        );
-      })}
-    </Container>
-  );
+  return <Container>{renderHistory()}</Container>;
 };

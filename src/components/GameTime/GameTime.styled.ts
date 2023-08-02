@@ -11,12 +11,15 @@ export const Container = styled("div")(() => {
     display: "inline-block",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: 11,
+    fontSize: 15,
     color: "white",
     // margin: "1rem 0",
     border: "solid",
     padding: 11,
     borderRadius: 10,
     backgroundColor: "navy",
+    "&:hover": {
+      cursor: "pointer",
+    },
   };
 });

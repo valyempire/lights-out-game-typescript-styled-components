@@ -11,11 +11,11 @@ export const Container = styled("div")(() => {
     display: "inline-block",
     alignItems: "center",
     justifyContent: "center",
-    fontSize: "1.2rem",
+    fontSize: 15,
     color: "white",
     margin: "1rem 0",
     border: "solid",
-    padding: 12,
+    padding: 9,
     borderRadius: 10,
     backgroundColor: "navy",
   };

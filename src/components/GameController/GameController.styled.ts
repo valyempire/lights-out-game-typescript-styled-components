@@ -10,7 +10,7 @@ export const Container = styled("div")(() => {
   return {
     padding: 8,
     cursor: "pointer",
-    fontSize: 11,
+    fontSize: 16,
     fontWeight: "bold",
     display: "inline-block",
     alignItems: "center",
@@ -31,6 +31,6 @@ export const GameHeaders = styled("div")(() => {
     alignItems: "center",
     justifyContent: "center",
     gap: 20,
-    marginRight: 85,
+    marginTop: 10,
   };
 });

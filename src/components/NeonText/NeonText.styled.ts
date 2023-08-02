@@ -105,7 +105,7 @@ export const Container = styled("h2", {
     justifyContent: "center",
     height: "100%",
     color: getTextColor(),
-    fontSize: 30,
+    fontSize: 60,
     margin: 0,
     fontFamily: "Lucida Handwriting",
     textShadow: `0 0 3vw ${getTextShadowColor()}`,

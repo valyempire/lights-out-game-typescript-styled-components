@@ -12,9 +12,13 @@ export const Container = styled("div")(() => {
     float: "left",
 
     marginLeft: 30,
-    border: "1px solid #fff",
-    padding: 5,
-    backgroundColor: "red",
+    padding: 10,
+    backgroundColor: "#006b2d",
+    "&:hover": {
+      backgroundColor: "#00bfff", // Schimbăm culoarea de fundal la hover
+      color: "#fff", // Schimbăm culoarea textului la hover
+      cursor: "pointer",
+    },
   };
 });
 

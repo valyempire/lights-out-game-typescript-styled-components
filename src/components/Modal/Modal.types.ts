@@ -4,3 +4,7 @@ export interface ModalProps {
   children: React.ReactNode;
   title: string;
 }
+
+export interface ContentContainerProps {
+  width?: number;
+}

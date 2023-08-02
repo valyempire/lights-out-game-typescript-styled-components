@@ -18,9 +18,9 @@ export const Container = styled("div", {
   const { active, gridSize } = props;
 
   const getSize = () => {
-    if (gridSize > 5) return 30;
-    if (gridSize > 3) return 35;
-    return 50;
+    if (gridSize > 5) return 50;
+    if (gridSize > 3) return 90;
+    return 100;
   };
   return {
     display: "flex",
