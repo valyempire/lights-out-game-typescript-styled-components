@@ -4,6 +4,11 @@
 import { styled } from "@mui/system";
 
 /**
+ * Imports types
+ */
+import { ContentContainerProps } from "./Modal.types";
+
+/**
  *  Styles the Modal Overlay
  */
 export const ModalOverlay = styled("div")(() => {
@@ -24,13 +29,37 @@ export const ModalOverlay = styled("div")(() => {
   };
 });
 
+// /**
+//  *  Styles the Modal Content
+//  */
+// export const ModalContent = styled("div")(() => {
+//   return {
+//     position: "relative",
+//     width: 876,
+//     height: "auto",
+//     backgroundColor: "#212121",
+//     borderRadius: 5,
+//     padding: 20,
+//     zIndex: 1000,
+//     display: "flex",
+//     flexDirection: "column",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   };
+// });
+
 /**
- *  Styles the Modal Content
+ * Styles the Modal Content
  */
-export const ModalContent = styled("div")(() => {
+export const ModalContent = styled("div", {
+  shouldForwardProp: (propName) => propName !== "width",
+})<ContentContainerProps>((props) => {
+  const { width } = props;
+
   return {
     position: "relative",
-    width: 600,
+    width: width || 876,
+
     height: "auto",
     backgroundColor: "#212121",
     borderRadius: 5,
@@ -40,6 +69,14 @@ export const ModalContent = styled("div")(() => {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    "@media (max-width: 768px)": {
+      height: "auto",
+      width: 600,
+    },
+    "@media (max-width: 391px)": {
+      height: "auto",
+      width: 300,
+    },
   };
 });
 

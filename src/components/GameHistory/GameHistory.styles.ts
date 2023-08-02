@@ -8,16 +8,20 @@ import { styled } from "@mui/system";
  */
 export const Container = styled("div")(() => {
   return {
-    display: "inline-block",
-    float: "left",
-
-    marginLeft: 30,
+    border: "1px solid #263238",
     padding: 10,
-    backgroundColor: "#006b2d",
-    "&:hover": {
-      backgroundColor: "#00bfff", // Schimbăm culoarea de fundal la hover
-      color: "#fff", // Schimbăm culoarea textului la hover
+    borderRadius: 5,
+    backgroundColor: "#073b7c",
+    cursor: "pointer",
+    marginLeft: 10,
+    "& svg": {
       cursor: "pointer",
+      fontSize: 30,
+      color: "#fff",
+    },
+
+    "&:hover": {
+      backgroundColor: "#00bfff",
     },
   };
 });

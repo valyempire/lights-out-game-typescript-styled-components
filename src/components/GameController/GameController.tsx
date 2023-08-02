@@ -10,11 +10,16 @@ import { WinnerMessage } from "../WinnerMessage/WinnerMessage";
 import { Timer } from "../Timer";
 import { GameHistory } from "../GameHistory";
 import { Hints } from "../Hints";
+import { GameRanking } from "../GameRanking";
 /**
  * imports styles
  */
 
-import { Container, GameHeaders } from "./GameController.styled";
+import {
+  Container,
+  GameHeaders,
+  LeftTopSection,
+} from "./GameController.styled";
 
 /**
  * imports hooks
@@ -27,11 +32,13 @@ import { useGame } from "../../hooks";
  */
 export const GameController: React.FC = () => {
   const { board, winner, moves } = useGame();
-  console.log(board);
   return (
     <div>
-      <GameHistory />
-      <Hints />
+      <LeftTopSection>
+        <GameHistory />
+        <Hints />
+        <GameRanking />
+      </LeftTopSection>
       <Title />
       <GameHeaders className="vali">
         <GameReset />

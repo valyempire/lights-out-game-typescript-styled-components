@@ -34,3 +34,11 @@ export const GameHeaders = styled("div")(() => {
     marginTop: 10,
   };
 });
+
+export const LeftTopSection = styled("div")({
+  display: "flex", // Setăm containerul să fie flexibil
+  alignItems: "center", // Aliniem componentele în centru pe axa verticală
+  justifyContent: "flex-start", // Aliniem componentele la stânga pe axa orizontală
+  marginBottom: 20,
+  gap: 20, // Adăugăm un spațiu între componentele din stânga
+});

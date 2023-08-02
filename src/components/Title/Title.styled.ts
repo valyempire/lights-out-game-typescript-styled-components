@@ -5,5 +5,6 @@ export const Container = styled("div")(() => {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 0, // Adăugăm margin-top 0 pentru a elimina spațiul de sus
   };
 });

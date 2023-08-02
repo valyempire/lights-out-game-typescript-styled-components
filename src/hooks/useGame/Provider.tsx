@@ -70,12 +70,18 @@ export const GameProvider: React.FC<ProviderProps> = (props) => {
   const [helperOn, setHelperOn] = useState(false);
 
   /**
+   * Initializes the modal
+   */
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  /**
    * Handles the change of the grid size
    */
   const changeGridSize = (size: number) => {
     setGridSize(size);
     initializeBoard(size, gameMode);
     setMoves([]);
+    setWinner(false);
   };
 
   /**
@@ -162,6 +168,20 @@ export const GameProvider: React.FC<ProviderProps> = (props) => {
     setMoves([]);
   };
 
+  /**
+   * Handles the open modal
+   */
+  const handleOpenModal = () => {
+    setIsOpen(true);
+  };
+
+  /**
+   * Handles the close modal
+   */
+  const handleCloseModal = () => {
+    setIsOpen(false);
+  };
+
   const formatTimer = (timer: { minutes: number; seconds: number }) => {
     return `${timer.minutes < 10 ? "0" + timer.minutes : timer.minutes}:${
       timer.seconds < 10 ? "0" + timer.seconds : timer.seconds
@@ -218,6 +238,7 @@ export const GameProvider: React.FC<ProviderProps> = (props) => {
     timer,
     isReset,
     hints,
+    isOpen,
     moves,
     history,
     helperOn,
@@ -226,12 +247,15 @@ export const GameProvider: React.FC<ProviderProps> = (props) => {
     initializeBoard,
     toggleCellsAround,
     handleResetGame,
+    handleOpenModal,
+    handleCloseModal,
     deleteHistoryItem,
     clearHistory,
     setTimer,
     setBoard,
     setHints,
     setMoves,
+    setIsOpen,
     setHelperOn,
   };
 

@@ -353,21 +353,39 @@ export const useGameUtils = () => {
   const formatTimestamp = (timestamp: number) => {
     const date = new Date(timestamp);
 
-    const day = date.getDate().toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, "0");
 
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
 
     const year = date.getFullYear();
 
-    const hours = date.getHours().toString().padStart(2, '0');
+    const hours = date.getHours().toString().padStart(2, "0");
 
     /**
      * Gets the minutes
      */
-    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, "0");
 
     return `${day}-${month}-${year} ${hours}:${minutes}`;
   };
+
+  /**
+   * Handles reversing an array
+   */
+  const reverseArray = (array: any[]) => {
+    const newArray = [];
+
+    for (let i = array.length - 1; i >= 0; i--) {
+      newArray.push(array[i]);
+    }
+
+    return newArray;
+  };
+
+  /**
+   * Formats the grid size
+   */
+  const formatGridSize = (size: number) => `${size}x${size}`;
 
   return {
     solvePuzzle,
@@ -375,6 +393,8 @@ export const useGameUtils = () => {
     checkForWinner,
     createSolvableBoard,
     formatBoardToNumbers,
-    formatTimestamp
+    formatTimestamp,
+    reverseArray,
+    formatGridSize,
   };
 };

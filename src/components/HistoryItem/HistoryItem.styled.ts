@@ -10,7 +10,7 @@ export const Container = styled("div")(() => {
   return {
     display: "flex",
     margin: 10,
-    border: "1px solid #00bfff",
+    // border: "1px solid #00bfff",
     padding: 10,
     backgroundColor: "#212121",
     flexDirection: "column",
